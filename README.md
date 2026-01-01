@@ -12,7 +12,7 @@ This project is a modular security research tool developed in Python to demonstr
 * **Secure Exfiltration Pipeline:** Implements the SMTP protocol over an SSL-encrypted connection to securely transmit captured data to a remote administrative server.
 * **Social Engineering Camouflage:** Displays a non-blocking "Decoy Error" message box using Win32 API to divert user attention during initialization.
 
-## 🛠️ Software Architecture
+##  Software Architecture
 The system is built with a modular, object-oriented approach for high maintainability:
 * `main.py`: The central orchestrator for all security modules.
 * `system_ops.py`: Handles persistence and UI deception.
