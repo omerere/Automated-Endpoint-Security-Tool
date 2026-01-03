@@ -41,7 +41,9 @@ The project follows a **Loader/Payload** design pattern to decouple system opera
 
 ### Prerequisites
 * Python 3.10+
-* Dependencies: `pip install pynput`
+* Installation: To run this project in a development environment, install the necessary dependencies:
+```bash
+pip install -r requirements.txt```
 
 ### Configuration
 1.  Rename `config.py.example` to `config.py`.
