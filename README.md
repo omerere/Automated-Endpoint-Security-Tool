@@ -43,7 +43,7 @@ The project follows a **Loader/Payload** design pattern to decouple system opera
 * Python 3.10+
 * Installation: To run this project in a development environment, install the necessary dependencies:
 ```bash
-pip install -r requirements.txt```
+pip install -r requirements.txt
 
 ### Configuration
 1.  Rename `config.py.example` to `config.py`.
